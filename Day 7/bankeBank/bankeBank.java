@@ -4,7 +4,7 @@ public static void main(String[] args){
 
 Scanner input = new Scanner (System.in);
 
-String bank = """
+String bankMenu = """
 
 =============
 BANKE BANK
@@ -31,17 +31,25 @@ Do you agree to the following terms and conditions YES/NO.
 
 """;
 
-System.out.print(bank);
+
+System.out.print(bankMenu);
 int userSelection = input.nextInt();
 
+switch (userSelection){
+
+case 1: bankMenu();
+break;
+}
+}
 
 
-if (userSelection == 1){
+
+public static void bankMenu(){
 System.out.print("Please select your country for opening account: ");
-String country = input.next();
+String country = input.nextLine();
 
-if (country.equals("Nigeria")){
 
+	if (country.equals("Nigeria")){
 System.out.print("Enter your email address: ");
 String email = input.next();
 char reuslt = email.charAt(email.length() - 1);
@@ -110,28 +118,10 @@ String answer = input.next();
 	else {System.out.print("Commot here abeg");}
 
 
+
 }
 
-else if (userSelection == 2) System.out.print("Are you sure you want to close this account?");
-
-//else{ System.out.print("Our services are only available in Nigeria");}
-
-
-
-
-
-
-
-
-
-
-
-
-
-	}
-
-
-
+else{ System.out.print("Our services are only available in Nigeria");}
 
 
 }
