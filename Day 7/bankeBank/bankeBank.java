@@ -137,9 +137,15 @@ String accountClose = input.next();
 	if(enteredUsername.equals(username)){
 	
 	userData.set(3, "Closed");
+	
+	System.out.print("Account Deleted\n");
 		}
+	
 
-	else { System.out.print("Account not found\n"); }
+	else { System.out.print("Account not found\n"); 
+		}
+	
+	menu();
 
 	
 	}
@@ -149,7 +155,7 @@ String accountClose = input.next();
 
 	
 
-menu();
+
 }
 public static void depositMoney(){
 Scanner input = new Scanner (System.in); 
