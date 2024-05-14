@@ -1,13 +1,18 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 public class bankeBank {
 private static int deposit = 0;
-private static String password;
+private static String pin;
+
+private static List<String> userData = new ArrayList<>();
 
 Scanner input = new Scanner (System.in);
 
 public static void main(String[] args){
 menu();
 }
+
 
 public static void menu(){
 Scanner input = new Scanner (System.in);
@@ -57,6 +62,8 @@ break;
 
 public static void bankMenu() {
 Scanner input = new Scanner (System.in);
+
+
 System.out.print("Please select your country for opening account: ");
 String country = input.nextLine();
 
@@ -71,52 +78,32 @@ while(reuslt != 'm'){
 	reuslt = email.charAt(email.length() - 1);
 		
 			}
-System.out.print("What is your full name?  ");
-String name = input.next();
 
-System.out.print("What is your tel-phone number: ");
-String number = input.nextLine();
-input.nextLine();
+System.out.print("Enter first name?  ");
+String firstName = input.next();
 
-	if (number.length() > 11){
-	System.out.print("Invalid phone number");
-			}
+System.out.print("Enter last name?  ");
+String lastName = input.next();
 
-System.out.print("What is your address  ");
-String address = input.next();
-
-System.out.print("Please your bvn");
-String bvn = input.nextLine();
-System.out.print(" ");
-bvn = input.next();
-
-	if (bvn.length() > 11){
-	System.out.print("Invalid bvn number");		
-		}
-
-System.out.print("Please your NIN  ");
-String nin = input.next();
-
-	if (nin.length() > 11){
-	System.out.print("Invalid NIN number");		
-		}
 
 System.out.print("Choose a unique username ");
 String username = input.next();
 
-System.out.print("Choose a unique password ");
- password = input.next();
+System.out.print("Choose a unique pin ");
+ pin = input.next();
 input.nextLine();
-System.out.print("Confirm password ");
-String confirmPassword = input.next();
+System.out.print("Confirm pin ");
+String confirmPin = input.next();
 
-	while(!password.equals(confirmPassword)){
+	while(!pin.equals(confirmPin)){
 		System.out.print("Password miss match ");
 		System.out.print("Choose a unique password ");
-		password = input.next();
+		pin = input.next();
 		System.out.print("Confirm password ");
-		confirmPassword = input.next();
+		confirmPin = input.next();
 			} 
+
+userData.add(String.format("%s%s%s%s%s",email, firstName, lastName, username, pin));
 
 String terms = """
 	TERMS AND CONDITIONS
@@ -241,11 +228,11 @@ Scanner input = new Scanner (System.in);
 System.out.print("Enter current pin ");
 String pin = input.nextLine();
 
-while (!pin.equals(password)){
+while (!pin.equals(pin)){
 System.out.print("Invalid");
 System.out.print("Enter current pin ");
  pin = input.nextLine();
-if (pin.equals(password)){
+if (pin.equals(pin)){
 break;
 }
 }
