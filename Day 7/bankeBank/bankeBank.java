@@ -99,7 +99,11 @@ String confirmPin = input.next();
 		confirmPin = input.next();
 			} 
 
-userData.add(String.format("%s%s%s%s%s",email, firstName, lastName, username, pin));
+userData.add(email);
+userData.add(firstName);
+userData.add(lastName);
+userData.add(username);
+userData.add(pin);
 	
 System.out.print("Account succesfully created\n");
 		
@@ -112,6 +116,7 @@ menu();
 
 public static void closedAccount(){
 Scanner input = new Scanner (System.in);
+
 System.out.print("Are you sure you want to close this account? YES/NO ");
 String accountClose = input.next();
 
@@ -121,23 +126,30 @@ String accountClose = input.next();
 	System.out.print("Please enter YES/NO ");
 	accountClose = input.next();
 		}
+
+	
+	
 	
 	if (accountClose.equalsIgnoreCase("yes")){
 	System.out.print("Enter your username ");
 	String enteredUsername = input.next();
 
-	for (int i = 0; i < userData.size(); i++){
-	if(userData.get(i).contains(enteredUsername)){
-	userData.set(i, "Closed");
+	if(enteredUsername.equals(username)){
+	
+	userData.set(3, "Closed");
 		}
-	}
-	System.out.print("Account not found\n");
-	for(String i : userData){
-		System.out.print(i+ " ");
-	}
 
-	menu();
-}
+	else { System.out.print("Account not found\n"); }
+
+	
+	}
+	
+	
+
+
+	
+
+menu();
 }
 public static void depositMoney(){
 Scanner input = new Scanner (System.in); 
@@ -158,6 +170,11 @@ menu();
 public static void withdrawMoney(){
 Scanner input = new Scanner (System.in); 
 
+System.out.print("Enter pin ");
+String password = input.next();
+
+if (password.equals(pin)){
+
 System.out.print("How much do you want to withdraw? ");
 int withdrawAmount = input.nextInt();
 
@@ -168,7 +185,8 @@ System.out.print("Omo 0 funds. Please deposit \n");
  else { deposit -= withdrawAmount;
 System.out.print("#"+withdrawAmount+" funds succesfully withdrawn\n");
 }
-
+}
+else System.out.print("Invalid\n");
 menu();
 
 }
