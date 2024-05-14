@@ -1,13 +1,16 @@
 import java.util.Scanner;
 public class bankeBank {
 private static int deposit = 0;
-public static void main(String[] args){
 
 Scanner input = new Scanner (System.in);
 
+public static void main(String[] args){
+menu();
+}
 
-
-String bankMenu = """
+public static void menu(){
+Scanner input = new Scanner (System.in);
+String menu = """
 
 =============
 BANKE BANK
@@ -22,16 +25,15 @@ BANKE BANK
 7. Change pin
 
 """;
-
-System.out.print(bankMenu);
+System.out.print(menu);
 int userSelection = input.nextInt();
 
-switch (userSelection){
+switch(userSelection){
 
 case 1: bankMenu();
 break;
 
-case 2: closeAccount();
+case 2: closedAccount();
 break;
 
 case 3: depositMoney();
@@ -39,36 +41,14 @@ break;
 
 case 4: withdrawMoney();
 break;
+
+case 5: checkBalance();
+break;
 }
 }
 
-public static String menu(){
-String bankMenu = """
-
-=============
-BANKE BANK
-=============
-
-1. Create an account 
-2. Close account 
-3. Deposit money
-4. Withdraw Money
-5. Check Account balance
-6. Transfer from one account to another
-7. Change pin
-
-""";
-
-return bankMenu;
-}
-
-
-
-public static void bankMenu(){
-
+public static void bankMenu() {
 Scanner input = new Scanner (System.in);
-
-
 System.out.print("Please select your country for opening account: ");
 String country = input.nextLine();
 
@@ -77,14 +57,12 @@ System.out.print("Enter your email address: ");
 String email = input.next();
 char reuslt = email.charAt(email.length() - 1);
 
-	while(reuslt != 'm'){
+while(reuslt != 'm'){
 	System.out.print("Invalid email address ");
 	email = input.next();
 	reuslt = email.charAt(email.length() - 1);
 		
 			}
-	
-
 System.out.print("What is your full name?  ");
 String name = input.next();
 
@@ -156,34 +134,12 @@ String answer = input.next();
 
 
 }
+else  System.out.print("Our services are only available in Nigeria");
 
-
-else { System.out.print("Our services are only available in Nigeria");}
-System.out.print(menu());
-	int menuOption = input.nextInt();
-	switch (menuOption){
-		case 1: bankMenu();
-break;
-
-case 2: closeAccount();
-break;
-
-case 3: depositMoney();
-break;
-
-case 4: withdrawMoney();
-break;
-	
-	
-		}
+menu();
 }
-
-
-
-public static void closeAccount(){
-
+public static void closedAccount(){
 Scanner input = new Scanner (System.in);
-
 System.out.print("Are you sure you want to close this account? YES/NO ");
 String accountClose = input.next();
 
@@ -196,28 +152,8 @@ String accountClose = input.next();
 	System.out.print("Oya sope otilo\n");
 	System.out.print("ACCOUNT CLOSED");
 			}
-	
-	else if (accountClose.equalsIgnoreCase("no")){
-	System.out.print(menu());
-	int userChoice = input.nextInt();
 
-	switch(userChoice){
-		case 1: bankMenu();
-break;
-
-case 2: closeAccount();
-break;
-
-case 3: depositMoney();
-break;
-
-case 4: withdrawMoney();
-break;
-		default:
-                System.out.println("Invalid selection");
-		}
-
-}
+	menu();
 }
 
 public static void depositMoney(){
@@ -232,22 +168,10 @@ System.out.print("Omo olowooooo wow \n");
 }
 
 System.out.print("#"+depositAmount+" Succesfully deposited");
-System.out.print(menu());
-	int userChoice = input.nextInt();
 
-	switch(userChoice){
-		case 1: bankMenu();
-			break;
-		case 2: closeAccount();
-			break;
-		case 3: depositMoney();
-			break;
-		default:
-                System.out.println("Invalid selection");
-		}
-
-
+menu();
 }
+
 public static void withdrawMoney(){
 Scanner input = new Scanner (System.in); 
 
@@ -258,11 +182,39 @@ if (withdrawAmount > deposit){
 
 System.out.print("Omo 0 funds. Please deposit ");
 }
+ else { deposit -= withdrawAmount;
+System.out.print("#"+withdrawAmount+" funds succesfully withdrawn");
+}
 
-
-
-
-
+menu();
 
 }
+
+public static void checkBalance(){
+Scanner input = new Scanner (System.in); 
+
+System.out.print("#"+deposit);
+
+if (deposit > 1000){
+System.out.print("Odogwu! ");
 }
+
+menu();
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
