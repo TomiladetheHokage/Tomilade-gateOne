@@ -21,7 +21,8 @@ BANKE BANK
 		closed_account()
 	elif user_selection == 3:
 		deposit()
-
+	elif user_selection == 4:
+		withdraw()
 def bank_menu():
 	first_name = str(input('Enter first name? '))
 	last_name = str(input('Enter last name? '))
@@ -54,6 +55,9 @@ def deposit():
 	
 	if len(user_data) >= 3 and pin == user_data[2]:
 		amount_deposit = int(input('How much do you want to deposit '))
+
+		global account_balance 
+
 		account_balance = 0
 		account_balance = account_balance + amount_deposit 
 		print(f' #{amount_deposit} succesfully deposited')
@@ -61,6 +65,25 @@ def deposit():
 		print('Invalid pin. Create an account and set a pin. If you already have an account please try the password again')
 	
 	menu()
-		
 
+def withdraw():
+	pin = str(input('Enter pin '))
+	
+	if len(user_data) >= 3 and pin == user_data[2]:
+		withdraw = int(input('How much do you want to withdraw '))
+
+		global account_balance 
+
+		if withdraw > account_balance:
+			print("No funds. please deposit")
+		else:
+			account_balance = account_balance - withdraw
+	else:
+		print('Invalid pin. Create an account and set a pin. If you already have an account please try the password again')
+
+	menu()
+
+def check_balance():
+
+		
 menu()
