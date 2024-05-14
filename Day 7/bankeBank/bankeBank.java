@@ -154,6 +154,11 @@ menu();
 public static void depositMoney(){
 Scanner input = new Scanner (System.in); 
 
+System.out.print("Enter pin ");
+String pinEntered = input.next();
+
+if (pinEntered.equals(pin)){
+
 System.out.print("How much do you want to deposit? ");
 int depositAmount = input.nextInt();
  deposit = deposit + depositAmount;
@@ -163,6 +168,9 @@ System.out.print("Omo olowooooo wow \n");
 }
 
 System.out.print("#"+depositAmount+" Succesfully deposited\n");
+}
+
+else System.out.print("Invalid\nCreate an account and set a pin. If you already have please try pin again\n");
 
 menu();
 }
@@ -186,7 +194,7 @@ System.out.print("Omo 0 funds. Please deposit \n");
 System.out.print("#"+withdrawAmount+" funds succesfully withdrawn\n");
 }
 }
-else System.out.print("Invalid\n");
+else System.out.print("Invalid\nCreate an account and set a pin. If you already have please try password again\n");
 menu();
 
 }
@@ -194,7 +202,7 @@ menu();
 public static void checkBalance(){
 Scanner input = new Scanner (System.in); 
 
-System.out.print("#"+deposit);
+System.out.print("#"+deposit+ "\n");
 
 if (deposit > 1000){
 System.out.print("Odogwu! ");
@@ -206,6 +214,11 @@ menu();
 public static void transfer(){
 Scanner input = new Scanner (System.in); 
 
+System.out.print("Enter pin ");
+String pinUserEntered = input.nextLine();
+
+if (pinUserEntered.equals(pin)){
+
 System.out.print("What bank do u want to transfer too? ");
 String transfer = input.nextLine();
 
@@ -215,12 +228,16 @@ String aza = input.nextLine();
 System.out.print("How much are you sending ?");
 String moneySent = input.nextLine();
 
+
 if(Integer.parseInt(moneySent) > deposit){
-System.out.print("Werey wan scam me\n");
+System.out.print("Werey wan scam me\nPlease deposit\n");
 }
 else {
 deposit = deposit - Integer.parseInt(moneySent);
 }
+}
+
+else System.out.print("Invalid\nCreate an account and set a pin. If you already have please try password again\n");
 
 menu();
 
