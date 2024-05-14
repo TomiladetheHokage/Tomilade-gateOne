@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class bankeBank {
 private static int deposit = 0;
+private static String password;
 
 Scanner input = new Scanner (System.in);
 
@@ -44,6 +45,13 @@ break;
 
 case 5: checkBalance();
 break;
+
+case 6: transfer();
+break;
+
+case 7: changePin();
+break;
+
 }
 }
 
@@ -97,7 +105,7 @@ System.out.print("Choose a unique username ");
 String username = input.next();
 
 System.out.print("Choose a unique password ");
-String password = input.next();
+ password = input.next();
 input.nextLine();
 System.out.print("Confirm password ");
 String confirmPassword = input.next();
@@ -138,6 +146,8 @@ else  System.out.print("Our services are only available in Nigeria");
 
 menu();
 }
+
+
 public static void closedAccount(){
 Scanner input = new Scanner (System.in);
 System.out.print("Are you sure you want to close this account? YES/NO ");
@@ -200,6 +210,51 @@ System.out.print("Odogwu! ");
 }
 
 menu();
+
+}
+public static void transfer(){
+Scanner input = new Scanner (System.in); 
+
+System.out.print("What bank do u want to transfer too? ");
+String transfer = input.nextLine();
+
+System.out.print("What is the account number? ");
+String aza = input.nextLine();
+
+System.out.print("How much are you sending ?");
+String moneySent = input.nextLine();
+
+if(Integer.parseInt(moneySent) > deposit){
+System.out.print("Werey wan scam me");
+}
+else {
+deposit = deposit - Integer.parseInt(moneySent);
+}
+
+menu();
+
+}
+
+public static void changePin(){
+
+Scanner input = new Scanner (System.in); 
+System.out.print("Enter current pin ");
+String pin = input.nextLine();
+
+while (!pin.equals(password)){
+System.out.print("Invalid");
+System.out.print("Enter current pin ");
+ pin = input.nextLine();
+if (pin.equals(password)){
+break;
+}
+}
+
+System.out.print("Enter new pin ");
+String newPin = input.nextLine();
+
+menu();
+
 
 }
 
