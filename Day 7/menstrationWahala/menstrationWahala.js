@@ -1,12 +1,14 @@
 const prompt = require('prompt-sync')();
 
+let periodStartDate;
+
 while (true) {
     let periodStartInput = prompt("When did your last period start? (YYYY-MM-DD) ");
 
-    let periodStartDate = new Date(periodStartInput);
+     periodStartDate = new Date(periodStartInput);
 
 
-    if (!isNaN(periodStartDate.getTime())) {
+    if (periodStartInput.includes('-') && periodStartInput.length === 10 && !isNaN(periodStartDate.getTime())) {
         console.log("Your last period started on: " + periodStartDate.toDateString());
      	break;
    		 } 
@@ -25,12 +27,12 @@ if (askUserIfSheKnowsperiodLength.toLowerCase() === 'yes'){
 let periodLength = prompt("How long does your period last? ")
 
 periodLength = parseInt(periodLength);
-console.log(periodLength)
+
 }
 
 if (askUserIfSheKnowsperiodLength.toLowerCase() === 'no'){ 
 periodLength = 5
-console.log(periodLength)
+
 }
 
 
@@ -42,18 +44,17 @@ let cycleLength = prompt("How long does your cycle last? ")
 
 cycleLength = parseInt(cycleLength);
 
-let nextFlow =  new Date(periodStartDate);
+ nextFlow =  new Date(periodStartDate);
 
 nextFlow.setDate(periodStartDate.getDate() + cycleLength);
 
 console.log("The next period start date is: " + nextFlow.toDateString());
-
 }
 
 if (askUserIfSheKnowsperiodCycle.toLowerCase() === 'no'){ 
 cycleLength = 28
 
- nextFlow =  new Date(periodStartDate);
+nextFlow =  new Date(periodStartDate);
 
 nextFlow.setDate(periodStartDate.getDate() + cycleLength);
 
