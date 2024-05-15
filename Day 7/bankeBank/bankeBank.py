@@ -23,6 +23,10 @@ BANKE BANK
 		deposit()
 	elif user_selection == 4:
 		withdraw()
+	elif user_selection == 5:
+		check_balance()
+	elif user_selection == 6:
+		transfer()
 def bank_menu():
 	first_name = str(input('Enter first name? '))
 	last_name = str(input('Enter last name? '))
@@ -78,12 +82,50 @@ def withdraw():
 			print("No funds. please deposit")
 		else:
 			account_balance = account_balance - withdraw
+			print(f' #{withdraw} succesfully withdrawn')
+			
 	else:
 		print('Invalid pin. Create an account and set a pin. If you already have an account please try the password again')
 
 	menu()
 
 def check_balance():
+	pin = str(input('Enter pin '))
+	
+	if len(user_data) >= 3 and pin == user_data[2]:
+		global account_balance
+
+		print(f' Your account balance is #{account_balance}')
+
+	else:
+		print('Invalid pin. Create an account and set a pin. If you already have an account please try the password again')
+
+	
+	menu()
+
+def transfer():
+	pin = str(input('Enter pin '))
+	
+	if len(user_data) >= 3 and pin == user_data[2]:
+		global account_balance
+
+		bank = str(input('What bank do you want to transfer too? '))
+		account_number = str(input('What is the account number '))
+		transfer_amount = int(input('How much are you sending? ')) 
+
+		if transfer_amount > account_balance:
+			print("Werey wan scam bank")
+		else:
+			account_balance = account_balance - transfer_amount
+			print(f' #{transfer_amount} has succesfully been sent')
+
+	else:
+		print('Invalid pin. Create an account and set a pin. If you already have an account please try the password again')
+
+	
+	menu()
+
+
+menu()
 
 		
-menu()
