@@ -48,7 +48,16 @@ cycleLength = parseInt(cycleLength);
 
 nextFlow.setDate(periodStartDate.getDate() + cycleLength);
 
+let ovulationBeginDate = new Date(periodStartDate)
+
+ovulationBeginDate.setDate(periodStartDate.getDate() + 12)
+
+let ovulationEndDate = new Date(periodStartDate)
+
+ovulationEndDate.setDate(periodStartDate.getDate() + 16)
+
 console.log("The next period start date is: " + nextFlow.toDateString());
+console.log("Your ovulation period is between: " + ovulationBeginDate.toDateString()+ " to"+ ovulationEndDate.toDateString());
 }
 
 if (askUserIfSheKnowsperiodCycle.toLowerCase() === 'no'){ 
