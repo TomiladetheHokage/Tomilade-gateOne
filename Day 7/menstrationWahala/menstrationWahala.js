@@ -22,51 +22,60 @@ while (true) {
 
 let askUserIfSheKnowsperiodLength = prompt("Do you know how long your period lasts? ")
 
-if (askUserIfSheKnowsperiodLength.toLowerCase() === 'yes'){
+	if (askUserIfSheKnowsperiodLength.toLowerCase() === 'yes'){
 
-let periodLength = prompt("How long does your period last? ")
+	let periodLength = prompt("How long does your period last? ")
 
-periodLength = parseInt(periodLength);
+	periodLength = parseInt(periodLength);
 
-}
+		}
 
-if (askUserIfSheKnowsperiodLength.toLowerCase() === 'no'){ 
-periodLength = 5
+	if (askUserIfSheKnowsperiodLength.toLowerCase() === 'no'){ 
+	periodLength = 5
+			}
 
-}
 
-
+while(true){
 let askUserIfSheKnowsperiodCycle = prompt("Do you know how long your cycle is? ")
 
-if (askUserIfSheKnowsperiodCycle.toLowerCase() === 'yes'){
+	if (askUserIfSheKnowsperiodCycle !== 'yes' && askUserIfSheKnowsperiodCycle !== 'no'){
+	console.log('Please enter yes or no')
+		}
 
-let cycleLength = prompt("How long does your cycle last? ")
+	if (askUserIfSheKnowsperiodCycle.toLowerCase() === 'yes'){
 
-cycleLength = parseInt(cycleLength);
+	let cycleLength = prompt("How long does your cycle last? ")
 
- nextFlow =  new Date(periodStartDate);
+	cycleLength = parseInt(cycleLength);
 
-nextFlow.setDate(periodStartDate.getDate() + cycleLength);
+	nextFlow =  new Date(periodStartDate);
 
-let ovulationBeginDate = new Date(periodStartDate)
+	nextFlow.setDate(periodStartDate.getDate() + cycleLength);
 
-ovulationBeginDate.setDate(periodStartDate.getDate() + 12)
+	let ovulationBeginDate = new Date(periodStartDate)
 
-let ovulationEndDate = new Date(periodStartDate)
+	ovulationBeginDate.setDate(periodStartDate.getDate() + 12)
 
-ovulationEndDate.setDate(periodStartDate.getDate() + 16)
+	let ovulationEndDate = new Date(periodStartDate)
 
-console.log("The next period start date is: " + nextFlow.toDateString());
-console.log("Your ovulation period is between: " + ovulationBeginDate.toDateString()+ " to"+ ovulationEndDate.toDateString());
-}
+	ovulationEndDate.setDate(periodStartDate.getDate() + 16)
 
-if (askUserIfSheKnowsperiodCycle.toLowerCase() === 'no'){ 
-cycleLength = 28
+	console.log("\nThe next period start date is: " + nextFlow.toDateString());
+	console.log("Your ovulation period is between: " + ovulationBeginDate.toDateString()+ " to "+ ovulationEndDate.toDateString());
+	break;
+			}
 
-nextFlow =  new Date(periodStartDate);
 
-nextFlow.setDate(periodStartDate.getDate() + cycleLength);
+		if (askUserIfSheKnowsperiodCycle.toLowerCase() === 'no'){ 
+		cycleLength = 28
 
-console.log("The next period start date is: " + nextFlow.toDateString());
+		nextFlow =  new Date(periodStartDate);
 
-}
+		nextFlow.setDate(periodStartDate.getDate() + cycleLength);
+
+		console.log("The next period start date is: " + nextFlow.toDateString());
+
+		break;
+			}
+
+			}
