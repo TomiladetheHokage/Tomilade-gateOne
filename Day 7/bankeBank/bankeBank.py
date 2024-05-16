@@ -27,14 +27,19 @@ BANKE BANK
 		check_balance()
 	elif user_selection == 6:
 		transfer()
+	elif user_selection == 7:
+		change_pin()
 def bank_menu():
 	first_name = str(input('Enter first name? '))
 	last_name = str(input('Enter last name? '))
 	pin = str(input('Enter pin '))
+
+	print('Account succesfully created')
 	
 	user_data.append(first_name)
 	user_data.append(last_name)
 	user_data.append(pin)
+
 	menu()
 
 def closed_account():
@@ -124,6 +129,27 @@ def transfer():
 
 	
 	menu()
+
+def change_pin():
+	pin = str(input('Enter pin '))
+	
+	if pin in user_data:
+		current_pin = str(input('Enter current pin '))
+		if current_pin == pin:
+			new_pin = str(input('Enter new pin '))
+			user_data[2] = new_pin
+			print('PIN succesfully changed')
+		else:
+			print('Invalid pin. please try password again')
+	else:
+		print('Invalid pin. Create an account and set a pin. If you already have an account please try the password again')
+	
+	menu()
+
+
+
+	
+	
 
 
 menu()
