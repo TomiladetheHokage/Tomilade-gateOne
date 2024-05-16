@@ -1,7 +1,7 @@
 const prompt = require('prompt-sync')();
 
 let periodStartDate;
-
+let periodLength;
 while (true) {
     let periodStartInput = prompt("When did your last period start? (YYYY-MM-DD) ");
 
@@ -24,7 +24,7 @@ let askUserIfSheKnowsperiodLength = prompt("Do you know how long your period las
 
 	if (askUserIfSheKnowsperiodLength.toLowerCase() === 'yes'){
 
-	let periodLength = prompt("How long does your period last? ")
+	periodLength = prompt("How long does your period last? ")
 
 	periodLength = parseInt(periodLength);
 
@@ -52,16 +52,37 @@ let askUserIfSheKnowsperiodCycle = prompt("Do you know how long your cycle is? "
 
 	nextFlow.setDate(periodStartDate.getDate() + cycleLength);
 
-	let ovulationBeginDate = new Date(periodStartDate)
+	let ovulationDate = new Date(periodStartDate)
 
-	ovulationBeginDate.setDate(periodStartDate.getDate() + 12)
+	ovulationDate.setDate(periodStartDate.getDate() + 14)
 
-	let ovulationEndDate = new Date(periodStartDate)
+	let fertilityStart = new Date(ovulationDate)
 
-	ovulationEndDate.setDate(periodStartDate.getDate() + 16)
+	fertilityStart.setDate(ovulationDate.getDate() - 5)
+
+	let fertilityEnd = new Date(ovulationDate)
+
+	fertilityEnd.setDate(ovulationDate.getDate() + 2)
+
+	let safePeriodStart = new Date(ovulationDate)
+	
+	safePeriodStart.setDate(ovulationDate.getDate() + 5)
+
+	let safePeriodEnd = new Date(nextFlow)
+
+	safePeriodEnd.setDate(nextFlow.getDate() - 5)
+
+	let periodEnd = new Date(nextFlow)
+
+	periodEnd.setDate(nextFlow.getDate() + periodLength)
+
 
 	console.log("\nThe next period start date is: " + nextFlow.toDateString());
-	console.log("Your ovulation period is between: " + ovulationBeginDate.toDateString()+ " to "+ ovulationEndDate.toDateString());
+	console.log("Your ovulation period is: " + ovulationDate.toDateString())
+	console.log("Your fertility period is: " + fertilityStart.toDateString()+ " to "+ fertilityEnd.toDateString());
+	console.log("Your safe period is: " + safePeriodStart.toDateString()+ " to "+ safePeriodEnd.toDateString());
+	console.log("Your period will last from: " + nextFlow.toDateString()+ " to "+ periodEnd.toDateString());
+	
 	break;
 			}
 
@@ -72,8 +93,36 @@ let askUserIfSheKnowsperiodCycle = prompt("Do you know how long your cycle is? "
 		nextFlow =  new Date(periodStartDate);
 
 		nextFlow.setDate(periodStartDate.getDate() + cycleLength);
+		
+		ovulationDate = new Date(nextFlow)
 
-		console.log("The next period start date is: " + nextFlow.toDateString());
+		ovulationDate.setDate(nextFlow.getDate() - 12)
+
+		fertilityStart = new Date(ovulationDate)
+
+		fertilityStart.setDate(ovulationDate.getDate() - 5)
+
+		fertilityEnd = new Date(ovulationDate)
+
+		fertilityEnd.setDate(ovulationDate.getDate() + 2)
+
+		safePeriodStart = new Date(ovulationDate)
+	
+		safePeriodStart.setDate(ovulationDate.getDate() + 5)
+
+		safePeriodEnd = new Date(nextFlow)
+
+		safePeriodEnd.setDate(nextFlow.getDate() - 5)
+
+		let periodEnd = new Date(nextFlow)
+
+		periodEnd.setDate(nextFlow.getDate() + periodLength)
+
+		console.log("\nThe next period start date is: " + nextFlow.toDateString());
+		console.log("Your ovulation period is: " + ovulationDate.toDateString());
+		console.log("Your fertility period is: " + fertilityStart.toDateString()+ " to "+ fertilityEnd.toDateString());
+		console.log("Your safe period is: " + safePeriodStart.toDateString()+ " to "+ safePeriodEnd.toDateString());
+		console.log("Your period will last from: " + nextFlow.toDateString()+ " to "+ periodEnd.toDateString());
 
 		break;
 			}
